@@ -452,3 +452,208 @@ footer .footer-inner {
   padding-left: 0.75rem;
   margin-top: 1.2rem;
 }
+/* ========================
+   MOTYW DARK + ANIMACJE
+======================== */
+
+/* Płynne przejście */
+body, header, footer, .card, .hero-card, .contact-box, .step, nav a {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Domyślny jasny motyw – nic nie zmieniamy
+   Kolory są już w :root */
+
+/* DARK: kolory */
+body.dark {
+  --color-bg: #0f1115;
+  --color-text: #e7e7e7;
+  --color-text-muted: #b3b3b3;
+  --color-primary: #7bb3ff;
+  --color-primary-dark: #5a8bd8;
+  --color-accent: #ffc85c;
+  --color-border: #2d2f34;
+}
+
+body.dark header,
+body.dark footer,
+body.dark main section:nth-of-type(even) {
+  background: #15171c;
+}
+
+body.dark .card,
+body.dark .hero-card,
+body.dark .contact-box,
+body.dark .step {
+  background: #1a1c22;
+  border-color: var(--color-border);
+}
+
+body.dark nav a:hover,
+body.dark nav a:focus {
+  background: #26282f;
+}
+
+/* ========================
+   PRZEŁĄCZNIK MOTYWU
+======================== */
+.theme-toggle {
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--color-border);
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background 0.25s;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  background: #e5edf7;
+}
+
+body.dark .theme-toggle:hover,
+body.dark .theme-toggle:focus {
+  background: #26282f;
+}
+
+.theme-toggle .theme-icon {
+  display: inline-block;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.theme-toggle .sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.theme-toggle .moon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+body.dark .theme-toggle .sun {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+body.dark .theme-toggle .moon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+/* ========================
+   MOTYW DARK + ANIMACJE
+======================== */
+
+/* Płynne przejście */
+body, header, footer, .card, .hero-card, .contact-box, .step, nav a {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Domyślny jasny motyw – nic nie zmieniamy
+   Kolory są już w :root */
+
+/* DARK: kolory */
+body.dark {
+  --color-bg: #0f1115;
+  --color-text: #e7e7e7;
+  --color-text-muted: #b3b3b3;
+  --color-primary: #7bb3ff;
+  --color-primary-dark: #5a8bd8;
+  --color-accent: #ffc85c;
+  --color-border: #2d2f34;
+}
+
+body.dark header,
+body.dark footer,
+body.dark main section:nth-of-type(even) {
+  background: #15171c;
+}
+
+body.dark .card,
+body.dark .hero-card,
+body.dark .contact-box,
+body.dark .step {
+  background: #1a1c22;
+  border-color: var(--color-border);
+}
+
+body.dark nav a:hover,
+body.dark nav a:focus {
+  background: #26282f;
+}
+
+/* ========================
+   PRZEŁĄCZNIK MOTYWU
+======================== */
+.theme-toggle {
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--color-border);
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background 0.25s;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  background: #e5edf7;
+}
+
+body.dark .theme-toggle:hover,
+body.dark .theme-toggle:focus {
+  background: #26282f;
+}
+
+.theme-toggle .theme-icon {
+  display: inline-block;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.theme-toggle .sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.theme-toggle .moon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+body.dark .theme-toggle .sun {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+body.dark .theme-toggle .moon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* PILLE – DARK MODE */
+body.dark .pill {
+  background: #1c1e24;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+body.dark .pill-strong {
+  background: #1c1e24;
+  border-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+body.dark .pill-small {
+  background: #1c1e24;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
