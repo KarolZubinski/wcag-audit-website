@@ -12,100 +12,126 @@
     <!-- Zewnętrzny CSS -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/theme.css" />
-
   </head>
 
   <body>
-    <a class="skip-link" href="#main">Przejdź do treści głównej</a>
+    <a class="skip-link" href="#main" data-i18n="skip_to_content"
+      >Przejdź do treści głównej</a
+    >
 
     <header role="banner">
       <div class="container">
-        <div class="top-bar">
-          <div class="brand">
-            <div class="brand-logo" aria-hidden="true">A11y</div>
-            <div class="brand-text">
-              <span class="brand-name">Twoja Firma Accessibility</span>
-              <span class="brand-tagline"
-                >Audyty WCAG dla stron i aplikacji webowych</span
-              >
-            </div>
-          </div>
-          <nav aria-label="Główne menu">
-            <a href="#uslugi">Usługi</a>
-            <a href="#proces">Jak pracuję</a>
-            <a href="#omnie">O mnie</a>
-            <a href="#kontakt">Kontakt</a>
-          </nav>
-          <button id="themeToggle" class="toggle" aria-label="Przełącz motyw">
-  <span class="toggle__track"></span>
-  <span class="toggle__thumb">
-    
-    <!-- Ikona słońca -->
-    <svg class="icon sun" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="5"></circle>
-      <g stroke-width="2">
-        <line x1="12" y1="1" x2="12" y2="4"></line>
-        <line x1="12" y1="20" x2="12" y2="23"></line>
-        <line x1="1" y1="12" x2="4" y2="12"></line>
-        <line x1="20" y1="12" x2="23" y2="12"></line>
-        <line x1="4.2" y1="4.2" x2="6.3" y2="6.3"></line>
-        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8"></line>
-        <line x1="4.2" y1="19.8" x2="6.3" y2="17.7"></line>
-        <line x1="17.7" y1="6.3" x2="19.8" y2="4.2"></line>
-      </g>
-    </svg>
+<div class="top-bar">
+  <div class="brand">
+    <div class="brand-logo" aria-hidden="true">A11y</div>
+    <div class="brand-text">
+      <span class="brand-name" data-i18n="brand_name">Twoja Firma Accessibility</span>
+      <span class="brand-tagline" data-i18n="brand_tagline">Audyty WCAG dla stron i aplikacji webowych</span>
+    </div>
+  </div>
 
-    <!-- Ikona księżyca -->
-    <svg class="icon moon" viewBox="0 0 24 24">
-      <path d="M21 12.79A9 9 0 0 1 11.21 3 
-               7 7 0 1 0 21 12.79z"/>
-    </svg>
-  </span>
-</button>
+  <nav aria-label="Główne menu">
+    <a href="#uslugi" data-i18n="menu_services">Usługi</a>
+    <a href="#proces" data-i18n="menu_process">Jak pracuję</a>
+    <a href="#omnie" data-i18n="menu_about">O mnie</a>
+    <a href="#kontakt" data-i18n="menu_contact">Kontakt</a>
+  </nav>
 
+  <!-- ★ NOWY PRZEŁĄCZNIK JĘZYKA — IDENTYCZNY JAK themeToggle ★ -->
+  <button id="langToggle" class="toggle" aria-label="Zmień język">
+    <span class="toggle__track"></span>
+    <span class="toggle__thumb">
+      <span class="lang-label">EN</span>
+    </span>
+  </button>
 
+  <!-- Oryginalny przełącznik motywu -->
+  <button id="themeToggle" class="toggle" aria-label="Przełącz motyw">
+    <span class="toggle__track"></span>
+    <span class="toggle__thumb">
+      <svg class="icon sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="5"></circle>
+      </svg>
+      <svg class="icon moon" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79z"/>
+      </svg>
+    </span>
+  </button>
+</div>
 
 
         <section class="hero" aria-labelledby="hero-heading">
           <div class="hero-grid">
             <div>
-              <h1 id="hero-heading">
+              <h1
+                id="hero-heading"
+                data-i18n="hero_title"
+              >
                 Dostępność cyfrowa bez komplikacji. Profesjonalne audyty WCAG
                 2.1 / 2.2.
               </h1>
-              <p class="hero-lead">
+              <p class="hero-lead" data-i18n="hero_lead">
                 Pomagam firmom i instytucjom upewnić się, że ich serwisy, sklepy
                 i aplikacje są dostępne dla wszystkich użytkowników – zgodnie z
                 wymogami prawnymi i dobrymi praktykami UX.
               </p>
-              <div class="hero-highlights" aria-label="Najważniejsze atuty">
-                <div class="pill pill-strong">
+              <div
+                class="hero-highlights"
+                aria-label="Najważniejsze atuty"
+              >
+                <div class="pill pill-strong" data-i18n="hl_1">
                   +5 lat doświadczenia w audytach
                 </div>
-                <div class="pill">Zgodność z WCAG 2.1 / 2.2 AA</div>
-                <div class="pill">Raport z jasnymi rekomendacjami</div>
+                <div class="pill" data-i18n="hl_2">
+                  Zgodność z WCAG 2.1 / 2.2 AA
+                </div>
+                <div class="pill" data-i18n="hl_3">
+                  Raport z jasnymi rekomendacjami
+                </div>
               </div>
               <div class="btn-row">
-                <a class="btn btn-primary" href="#kontakt">Poproś o wycenę</a>
-                <a class="btn btn-secondary" href="#uslugi"
+                <a
+                  class="btn btn-primary"
+                  href="#kontakt"
+                  data-i18n="cta_quote"
+                  >Poproś o wycenę</a
+                >
+                <a
+                  class="btn btn-secondary"
+                  href="#uslugi"
+                  data-i18n="cta_services"
                   >Zobacz zakres usług</a
                 >
               </div>
-              <p class="hero-meta">
+              <p class="hero-meta" data-i18n="hero_meta">
                 <strong>Na start:</strong> darmowa 20-minutowa konsultacja
                 online – sprawdzimy, jak wygląda dostępność Twojej strony.
               </p>
             </div>
 
-            <aside class="hero-card" aria-label="Szybki podgląd audytu">
-              <h2>Co zawiera audyt dostępności?</h2>
+            <aside
+              class="hero-card"
+              aria-label="Szybki podgląd audytu"
+            >
+              <h2 data-i18n="hero_card_title">Co zawiera audyt dostępności?</h2>
               <ul>
-                <li>Analizę Twojej strony pod kątem WCAG 2.1 / 2.2</li>
-                <li>Testy z klawiaturą i czytnikami ekranu</li>
-                <li>Listę błędów z priorytetami i przykładami</li>
-                <li>Rekomendacje rozwiązań dla zespołu Dev / UX</li>
+                <li data-i18n="audit_1">
+                  Analizę Twojej strony pod kątem WCAG 2.1 / 2.2
+                </li>
+                <li data-i18n="audit_2">
+                  Testy z klawiaturą i czytnikami ekranu
+                </li>
+                <li data-i18n="audit_3">
+                  Listę błędów z priorytetami i przykładami
+                </li>
+                <li data-i18n="audit_4">
+                  Rekomendacje rozwiązań dla zespołu Dev / UX
+                </li>
               </ul>
-              <div class="hero-card-footer">
+              <div
+                class="hero-card-footer"
+                data-i18n="hero_card_footer"
+              >
                 Otrzymasz konkretny, zrozumiały raport – bez żargonu, z
                 przykładami kodu i propozycjami zmian.
               </div>
@@ -118,10 +144,17 @@
     <main id="main">
       <section id="uslugi" aria-labelledby="services-heading">
         <div class="container">
-          <h2 class="section-title" id="services-heading">
+          <h2
+            class="section-title"
+            id="services-heading"
+            data-i18n="services_heading"
+          >
             Usługi audytu dostępności
           </h2>
-          <p class="section-intro">
+          <p
+            class="section-intro"
+            data-i18n="services_intro"
+          >
             Oferuję audyty dostępności cyfrowej dla stron internetowych i
             aplikacji webowych – od krótkich przeglądów, po pełne raporty zgodne
             z WCAG 2.1 / 2.2 na poziomie AA. Zakres współpracy dopasowuję do
@@ -130,47 +163,69 @@
 
           <div class="grid-3">
             <article class="card">
-              <h3>Pełny audyt WCAG</h3>
-              <p>
+              <h3 data-i18n="service_full_title">Pełny audyt WCAG</h3>
+              <p data-i18n="service_full_desc">
                 Kompleksowa analiza dostępności Twojego serwisu – warstwa
                 wizualna, treści, nawigacja, kod front-endu.
               </p>
               <ul>
-                <li>Zakres zgodny z WCAG 2.1 / 2.2 AA</li>
-                <li>Analiza reprezentatywnych widoków i ścieżek użytkownika</li>
-                <li>Raport z priorytetami i przykładami rozwiązań</li>
+                <li data-i18n="service_full_1">
+                  Zakres zgodny z WCAG 2.1 / 2.2 AA
+                </li>
+                <li data-i18n="service_full_2">
+                  Analiza reprezentatywnych widoków i ścieżek użytkownika
+                </li>
+                <li data-i18n="service_full_3">
+                  Raport z priorytetami i przykładami rozwiązań
+                </li>
               </ul>
             </article>
 
             <article class="card">
-              <h3>Szybki przegląd dostępności</h3>
-              <p>
+              <h3 data-i18n="service_quick_title">
+                Szybki przegląd dostępności
+              </h3>
+              <p data-i18n="service_quick_desc">
                 Jeśli potrzebujesz szybkiej informacji „gdzie jesteśmy z
                 dostępnością?” – wykonuję skrócony przegląd kluczowych
                 elementów.
               </p>
               <ul>
-                <li>Ocena najważniejszych widoków</li>
-                <li>Lista najpilniejszych problemów</li>
-                <li>Rekomendacje pierwszych kroków</li>
+                <li data-i18n="service_quick_1">
+                  Ocena najważniejszych widoków
+                </li>
+                <li data-i18n="service_quick_2">
+                  Lista najpilniejszych problemów
+                </li>
+                <li data-i18n="service_quick_3">
+                  Rekomendacje pierwszych kroków
+                </li>
               </ul>
             </article>
 
             <article class="card">
-              <h3>Konsultacje i wsparcie wdrożeniowe</h3>
-              <p>
+              <h3 data-i18n="service_support_title">
+                Konsultacje i wsparcie wdrożeniowe
+              </h3>
+              <p data-i18n="service_support_desc">
                 Pomagam zespołom developerów, projektantów i redaktorów
                 poprawnie wdrożyć rekomendacje po audycie.
               </p>
               <ul>
-                <li>Review makiet i komponentów</li>
-                <li>Konsultacje kodu front-end</li>
-                <li>Wsparcie przy testach regresji</li>
+                <li data-i18n="service_support_1">Review makiet i komponentów</li>
+                <li data-i18n="service_support_2">Konsultacje kodu front-end</li>
+                <li data-i18n="service_support_3">
+                  Wsparcie przy testach regresji
+                </li>
               </ul>
             </article>
           </div>
 
-          <div class="aria-note" aria-label="Informacja o elastyczności oferty">
+          <div
+            class="aria-note"
+            aria-label="Informacja o elastyczności oferty"
+            data-i18n="services_note"
+          >
             <strong>Nie wiesz, od czego zacząć?</strong> Napisz kilka zdań o
             swoim serwisie – zaproponuję wariant audytu i przybliżony zakres
             prac.
@@ -180,40 +235,58 @@
 
       <section id="proces" aria-labelledby="process-heading">
         <div class="container">
-          <h2 class="section-title" id="process-heading">
+          <h2
+            class="section-title"
+            id="process-heading"
+            data-i18n="process_heading"
+          >
             Jak wygląda współpraca?
           </h2>
-          <p class="section-intro">
+          <p
+            class="section-intro"
+            data-i18n="process_intro"
+          >
             Stawiam na prosty, przejrzysty proces – od pierwszego kontaktu,
             przez audyt, aż po konsultację wyników. Na każdym etapie wiesz, co
             dokładnie się dzieje i jakie są kolejne kroki.
           </p>
 
-          <div class="process-steps" aria-label="Kroki współpracy">
+          <div
+            class="process-steps"
+            aria-label="Kroki współpracy"
+          >
             <div class="step">
-              <div class="step-title">Poznanie potrzeb</div>
-              <p>
+              <div class="step-title" data-i18n="process_1_title">
+                Poznanie potrzeb
+              </div>
+              <p data-i18n="process_1_desc">
                 Krótkie spotkanie online lub wymiana maili – omawiamy Twój
                 serwis, grupy użytkowników oraz wymagania (np. prawne).
               </p>
             </div>
             <div class="step">
-              <div class="step-title">Ustalenie zakresu audytu</div>
-              <p>
+              <div class="step-title" data-i18n="process_2_title">
+                Ustalenie zakresu audytu
+              </div>
+              <p data-i18n="process_2_desc">
                 Wspólnie wybieramy kluczowe widoki i ścieżki, określamy
                 harmonogram oraz sposób przekazania wyników.
               </p>
             </div>
             <div class="step">
-              <div class="step-title">Realizacja audytu</div>
-              <p>
+              <div class="step-title" data-i18n="process_3_title">
+                Realizacja audytu
+              </div>
+              <p data-i18n="process_3_desc">
                 Łączę analizę automatyczną z ręcznymi testami klawiaturą i
                 czytnikami ekranu. Dokumentuję problemy i przykłady.
               </p>
             </div>
             <div class="step">
-              <div class="step-title">Raport i omówienie</div>
-              <p>
+              <div class="step-title" data-i18n="process_4_title">
+                Raport i omówienie
+              </div>
+              <p data-i18n="process_4_desc">
                 Otrzymujesz raport z priorytetami i rekomendacjami. Omawiamy
                 wyniki na spotkaniu i planujemy kolejne kroki.
               </p>
@@ -224,39 +297,55 @@
 
       <section id="omnie" aria-labelledby="about-heading">
         <div class="container">
-          <h2 class="section-title" id="about-heading">O mnie</h2>
+          <h2
+            class="section-title"
+            id="about-heading"
+            data-i18n="about_heading"
+          >
+            O mnie
+          </h2>
           <div class="two-columns">
             <div>
-              <p>
+              <p data-i18n="about_p1">
                 Nazywam się <strong>Imię i Nazwisko</strong> i od kilku lat
                 zajmuję się dostępnością cyfrową oraz projektowaniem przyjaznych
                 interfejsów. Wspierałem zespoły tworzące serwisy e-commerce,
                 portale informacyjne oraz systemy dla sektora publicznego.
               </p>
-              <p>
+              <p data-i18n="about_p2">
                 W swojej pracy stawiam na <strong>konkret</strong> – jasno
                 opisane problemy, ich wpływ na użytkowników oraz praktyczne
                 rekomendacje dla zespołu projektowego i developerskiego.
               </p>
-              <p>
+              <p data-i18n="about_p3">
                 Interesuje mnie nie tylko spełnienie formalnych wymogów WCAG,
                 ale przede wszystkim realne ułatwienie korzystania z Twojego
                 serwisu osobom z różnymi potrzebami.
               </p>
 
-              <div class="aria-note">
+              <div class="aria-note" data-i18n="about_note">
                 Tekst w tej sekcji możesz swobodnie edytować – dopasuj go do
                 swojego doświadczenia, specjalizacji oraz stylu komunikacji.
               </div>
             </div>
             <aside aria-label="Obszary specjalizacji">
               <div class="card">
-                <h3>Obszary, w których mogę pomóc</h3>
+                <h3 data-i18n="about_specializations_title">
+                  Obszary, w których mogę pomóc
+                </h3>
                 <ul>
-                  <li>Strony firmowe i wizerunkowe</li>
-                  <li>Sklepy internetowe i platformy SaaS</li>
-                  <li>Serwisy i BIP instytucji publicznych</li>
-                  <li>Design systemy i biblioteki komponentów</li>
+                  <li data-i18n="about_s1">
+                    Strony firmowe i wizerunkowe
+                  </li>
+                  <li data-i18n="about_s2">
+                    Sklepy internetowe i platformy SaaS
+                  </li>
+                  <li data-i18n="about_s3">
+                    Serwisy i BIP instytucji publicznych
+                  </li>
+                  <li data-i18n="about_s4">
+                    Design systemy i biblioteki komponentów
+                  </li>
                 </ul>
 
                 <p
@@ -265,6 +354,7 @@
                     font-size: 0.9rem;
                     color: var(--color-text-muted);
                   "
+                  data-i18n="about_specializations_note"
                 >
                   Jeśli Twojego typu serwisu nie ma na liście – napisz, opisz
                   krótko swój projekt. Odpowiem, czy mogę pomóc.
@@ -277,51 +367,100 @@
 
       <section id="kontakt" aria-labelledby="contact-heading">
         <div class="container">
-          <h2 class="section-title" id="contact-heading">Skontaktuj się</h2>
+          <h2
+            class="section-title"
+            id="contact-heading"
+            data-i18n="contact_heading"
+          >
+            Skontaktuj się
+          </h2>
           <div class="two-columns">
             <div>
-              <p class="contact-meta">
+              <p
+                class="contact-meta"
+                data-i18n="contact_intro"
+              >
                 Napisz kilka zdań o swoim serwisie lub aplikacji – podaj adres,
                 typ usługi, szacowaną liczbę podstron. Odpowiem z propozycją
                 zakresu audytu i przybliżoną wyceną.
               </p>
-              <div class="contact-meta" aria-label="Dane kontaktowe">
+              <div
+                class="contact-meta"
+                aria-label="Dane kontaktowe"
+              >
                 <p>
-                  <strong>E-mail:</strong>
+                  <strong data-i18n="contact_email_label">E-mail:</strong>
                   <a href="mailto:kontakt@twojafirma.pl"
                     >kontakt@twojafirma.pl</a
                   >
                 </p>
                 <p>
-                  <strong>Telefon:</strong>
+                  <strong data-i18n="contact_phone_label">Telefon:</strong>
                   <a href="tel:+48123456789">+48 123 456 789</a>
                 </p>
               </div>
-              <p class="contact-meta">
+              <p
+                class="contact-meta"
+                data-i18n="contact_meeting"
+              >
                 Możesz także zaproponować termin krótkiego spotkania online (np.
                 przez Teams / Google Meet) – omówimy Twoje potrzeby.
               </p>
               <div>
-                <strong>Najczęściej audytuję:</strong>
+                <strong data-i18n="contact_often"
+                  >Najczęściej audytuję:</strong
+                >
                 <div
                   class="pill-list"
                   aria-label="Najczęściej audytowane typy serwisów"
                 >
-                  <span class="pill-small">Strony firmowe</span>
-                  <span class="pill-small">Sklepy online</span>
-                  <span class="pill-small">Portale informacyjne</span>
-                  <span class="pill-small">Serwisy publiczne</span>
-                  <span class="pill-small">Aplikacje webowe</span>
+                  <span
+                    class="pill-small"
+                    data-i18n="contact_site1"
+                    >Strony firmowe</span
+                  >
+                  <span
+                    class="pill-small"
+                    data-i18n="contact_site2"
+                    >Sklepy online</span
+                  >
+                  <span
+                    class="pill-small"
+                    data-i18n="contact_site3"
+                    >Portale informacyjne</span
+                  >
+                  <span
+                    class="pill-small"
+                    data-i18n="contact_site4"
+                    >Serwisy publiczne</span
+                  >
+                  <span
+                    class="pill-small"
+                    data-i18n="contact_site5"
+                    >Aplikacje webowe</span
+                  >
                 </div>
               </div>
             </div>
 
             <div>
-              <form class="contact-box" aria-label="Formularz kontaktowy">
-                <label for="name">Imię i nazwisko / firma</label>
-                <input id="name" name="name" type="text" autocomplete="name" />
+              <form
+                class="contact-box"
+                aria-label="Formularz kontaktowy"
+              >
+                <label for="name" data-i18n="form_name"
+                  >Imię i nazwisko / firma</label
+                >
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                />
 
-                <label for="email">Adres e-mail</label>
+                <label for="email" data-i18n="form_email"
+                  >Adres e-mail</label
+                >
                 <input
                   id="email"
                   name="email"
@@ -329,13 +468,21 @@
                   autocomplete="email"
                 />
 
-                <label for="website">Adres strony / aplikacji (URL)</label>
+                <label for="website" data-i18n="form_website"
+                  >Adres strony / aplikacji (URL)</label
+                >
                 <input id="website" name="website" type="url" />
 
-                <label for="message">Krótki opis potrzeb</label>
+                <label for="message" data-i18n="form_message"
+                  >Krótki opis potrzeb</label
+                >
                 <textarea id="message" name="message"></textarea>
 
-                <button class="btn btn-primary" type="submit">
+                <button
+                  class="btn btn-primary"
+                  type="submit"
+                  data-i18n="form_submit"
+                >
                   Wyślij wiadomość
                 </button>
               </form>
@@ -348,14 +495,19 @@
     <footer role="contentinfo">
       <div class="container footer-inner">
         <span
-          >&copy; <span id="year">2025</span> Twoja Firma Accessibility.
-          Wszelkie prawa zastrzeżone.</span
+          >&copy; <span id="year">2025</span>
+          <span data-i18n="footer_company"
+            >Twoja Firma Accessibility. Wszelkie prawa zastrzeżone.</span
+          ></span
         >
-        <span>Strona zaprojektowana z myślą o dostępności (WCAG 2.1).</span>
+        <span data-i18n="footer_note"
+          >Strona zaprojektowana z myślą o dostępności (WCAG 2.1).</span
+        >
       </div>
     </footer>
 
     <!-- JS -->
+    <script src="assets/js/lang.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

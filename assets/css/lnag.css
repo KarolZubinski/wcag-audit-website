@@ -1,0 +1,19 @@
+/* Styl przycisku języka taki jak theme toggle */
+#langToggle {
+  margin-left: 1rem;
+  position: relative;
+}
+
+#langToggle .toggle__thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+#langToggle .lang-label {
+  display: block;
+  line-height: 1;
+}
