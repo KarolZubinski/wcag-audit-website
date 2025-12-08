@@ -1,0 +1,72 @@
+/* =========================================================
+   LANGUAGE TOGGLE (EN/PL) – SUWAK JAK THEME, ALE NIEZALEŻNY
+========================================================= */
+
+/* Bazowy wygląd przycisku */
+.lang-toggle {
+  width: 56px;
+  height: 30px;
+  background: var(--color-border, #ccc);
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  margin-left: 1rem;
+}
+
+/* Tło toru */
+.lang-track {
+  position: absolute;
+  inset: 0;
+  background: #d0d4dc;
+  border-radius: 50px;
+  transition: background 0.25s;
+}
+
+body.dark .lang-track {
+  background: #50535b;
+}
+
+/* Gałka (kółko) */
+.lang-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+  overflow: hidden;
+}
+
+/* Przesunięcie gałki przy aktywnym EN (klasa .active na buttonie) */
+.lang-toggle.active .lang-thumb {
+  transform: translateX(26px);
+}
+
+/* Tekst EN/PL w gałce */
+.lang-switch-label {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: var(--color-text);
+  z-index: 2;
+  pointer-events: none;
+}
+
+body.dark .lang-switch-label {
+  color: black;
+}
+
+/* (opcjonalnie, jeśli chcesz fade przy tłumaczeniu – możesz mieć już w main.css) */
+[data-i18n] {
+  transition: opacity 0.25s ease;
+}
+
+.lang-fade {
+  opacity: 0;
+}

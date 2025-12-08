@@ -45,8 +45,7 @@ const translations = {
     service_full_desc:
       "Kompleksowa analiza dostępności Twojego serwisu – warstwa wizualna, treści, nawigacja, kod front-endu.",
     service_full_1: "Zakres zgodny z WCAG 2.1 / 2.2 AA",
-    service_full_2:
-      "Analiza reprezentatywnych widoków i ścieżek użytkownika",
+    service_full_2: "Analiza reprezentatywnych widoków i ścieżek użytkownika",
     service_full_3: "Raport z priorytetami i przykładami rozwiązań",
 
     service_quick_title: "Szybki przegląd dostępności",
@@ -126,8 +125,7 @@ const translations = {
 
     // FOOTER
     footer_company: "Twoja Firma Accessibility. Wszelkie prawa zastrzeżone.",
-    footer_note:
-      "Strona zaprojektowana z myślą o dostępności (WCAG 2.1).",
+    footer_note: "Strona zaprojektowana z myślą o dostępności (WCAG 2.1).",
   },
 
   en: {
@@ -176,10 +174,8 @@ const translations = {
     service_full_desc:
       "A comprehensive analysis of your service’s accessibility – visual layer, content, navigation and front-end code.",
     service_full_1: "Scope aligned with WCAG 2.1 / 2.2 AA",
-    service_full_2:
-      "Analysis of representative views and user flows",
-    service_full_3:
-      "Report with priorities and example solutions",
+    service_full_2: "Analysis of representative views and user flows",
+    service_full_3: "Report with priorities and example solutions",
 
     service_quick_title: "Quick accessibility review",
     service_quick_desc:
@@ -263,6 +259,9 @@ const translations = {
   },
 };
 
+/* =========================================================
+   LOGIKA JĘZYKÓW + FADE + SUWAK EN/PL
+========================================================= */
 (function () {
   let currentLang = localStorage.getItem("lang") || "pl";
 
@@ -270,41 +269,50 @@ const translations = {
     const dict = translations[currentLang];
     if (!dict) return;
 
-    // język dokumentu
-    document.documentElement.lang = currentLang;
+    const elements = document.querySelectorAll("[data-i18n]");
 
-    // <title> i meta description
-    if (dict.meta_title) {
-      document.title = dict.meta_title;
-    }
-    if (dict.meta_description) {
+    // fade out
+    elements.forEach((el) => el.classList.add("lang-fade"));
+
+    setTimeout(() => {
+      // META
+      document.documentElement.lang = currentLang;
+      if (dict.meta_title) document.title = dict.meta_title;
+
       const meta = document.querySelector('meta[name="description"]');
-      if (meta) meta.setAttribute("content", dict.meta_description);
-    }
-
-    // elementy z data-i18n
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      if (dict[key]) {
-        el.innerHTML = dict[key];
+      if (meta && dict.meta_description) {
+        meta.setAttribute("content", dict.meta_description);
       }
-    });
 
-    // przycisk języka
-// przycisk języka - dostosowany do wyglądu przełącznika motywu
-const btn = document.getElementById("langToggle");
-if (btn) {
-  const thumb = btn.querySelector(".lang-label");
+      // TEKSTY
+      elements.forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) {
+          el.innerHTML = dict[key];
+        }
+      });
 
-  if (currentLang === "pl") {
-    thumb.textContent = "EN";
-    btn.setAttribute("aria-label", "Zmień język na angielski");
-  } else {
-    thumb.textContent = "PL";
-    btn.setAttribute("aria-label", "Switch language to Polish");
-  }
-}
+      // fade in
+      requestAnimationFrame(() => {
+        elements.forEach((el) => el.classList.remove("lang-fade"));
+      });
 
+      // SUWAK JĘZYKA
+      const btn = document.getElementById("langToggle");
+      const label = btn?.querySelector(".lang-switch-label");
+
+      if (btn && label) {
+        if (currentLang === "pl") {
+          label.textContent = "EN";
+          btn.classList.remove("active");
+          btn.setAttribute("aria-label", "Zmień język na angielski");
+        } else {
+          label.textContent = "PL";
+          btn.classList.add("active");
+          btn.setAttribute("aria-label", "Switch language to Polish");
+        }
+      }
+    }, 150);
   }
 
   function setLanguage(lang) {
@@ -321,9 +329,9 @@ if (btn) {
         setLanguage(currentLang === "pl" ? "en" : "pl");
       });
     }
+
     applyTranslations();
   });
 
-  // wystaw, gdybyś chciał użyć w innych skryptach
   window.setLanguage = setLanguage;
 })();
