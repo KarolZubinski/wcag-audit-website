@@ -1,0 +1,122 @@
+/* =========================================================
+   DARK MODE – VARIABLES
+========================================================= */
+
+body.dark {
+  --color-bg: #0f1115;
+  --color-text: #e7e7e7;
+  --color-text-muted: #b3b3b3;
+  --color-primary: #7bb3ff;
+  --color-primary-dark: #5a8bd8;
+  --color-accent: #ffc85c;
+  --color-border: #2d2f34;
+}
+
+/* Background changes */
+body.dark header,
+body.dark footer,
+body.dark main section:nth-of-type(even) {
+  background: #15171c;
+}
+
+body.dark .card,
+body.dark .hero-card,
+body.dark .contact-box,
+body.dark .step {
+  background: #1a1c22;
+  border-color: var(--color-border);
+}
+
+body.dark nav a:hover,
+body.dark nav a:focus {
+  background: #26282f;
+}
+
+/* Pills in dark mode */
+body.dark .pill,
+body.dark .pill-small {
+  background: #1c1e24;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+body.dark .pill-strong {
+  background: #263043;
+  border-color: var(--color-primary);
+}
+
+/* =========================================================
+   TOGGLE BUTTON (SVG) – NEW & CLEAN
+========================================================= */
+
+/* Base */
+.toggle {
+  width: 56px;
+  height: 30px;
+  background: var(--color-border, #ccc);
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+}
+
+.toggle__track {
+  position: absolute;
+  inset: 0;
+  background: #d0d4dc;
+  border-radius: 50px;
+  transition: background 0.25s;
+}
+
+body.dark .toggle__track {
+  background: #50535b;
+}
+
+/* Thumb */
+.toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+  overflow: hidden;
+}
+
+body.dark .toggle__thumb {
+  transform: translateX(26px);
+}
+
+/* Icons */
+.icon {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+/* Sun visible in light */
+.sun {
+  opacity: 1;
+  transform: scale(1);
+}
+body.dark .sun {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+/* Moon visible in dark */
+.moon {
+  opacity: 0;
+  transform: scale(0.4);
+}
+body.dark .moon {
+  opacity: 1;
+  transform: scale(1);
+}

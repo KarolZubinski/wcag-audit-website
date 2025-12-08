@@ -1,30 +1,39 @@
-// Aktualizacja roku w stopce
+// ===================================
+// STOPKA – aktualny rok
+// ===================================
 (function () {
   const yearSpan = document.getElementById("year");
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
   }
 })();
-// ==========================
+
+// ===================================
 // DARK MODE – TOGGLE + SYSTEM + MEMORY
-// ==========================
+// ===================================
 
-const toggle = document.getElementById("theme-toggle");
+// Uchwyt do przełącznika
+const toggle = document.getElementById("themeToggle");
 
-/* Ustawienia początkowe:
-   1. Jeśli użytkownik wybrał już motyw → używamy tego
-   2. Jeśli nie → sprawdzamy system (prefers-color-scheme) */
-const userTheme = localStorage.getItem("theme");
-const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+// Jeśli z jakiegoś powodu toggle nie istnieje – zatrzymujemy
+if (!toggle) {
+  console.warn("Brak elementu #themeToggle");
+} else {
 
-if (userTheme === "dark" || (!userTheme && systemPrefersDark)) {
-  document.body.classList.add("dark");
+  // Odczyt z localStorage
+  const userTheme = localStorage.getItem("theme");
+  const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  // Ustawienie wstępne
+  if (userTheme === "dark" || (!userTheme && systemPrefersDark)) {
+    document.body.classList.add("dark");
+  }
+
+  // Kliknięcie przełącznika
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    const newTheme = document.body.classList.contains("dark") ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+  });
 }
-
-// Przełączanie motywu
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-
-  const newTheme = document.body.classList.contains("dark") ? "dark" : "light";
-  localStorage.setItem("theme", newTheme);
-});
