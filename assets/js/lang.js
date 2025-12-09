@@ -312,7 +312,7 @@ const translations = {
           btn.setAttribute("aria-label", "Switch language to Polish");
         }
       }
-    }, 150);
+    }, 100);
   }
 
   function setLanguage(lang) {
@@ -325,9 +325,22 @@ const translations = {
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("langToggle");
     if (btn) {
-      btn.addEventListener("click", () => {
-        setLanguage(currentLang === "pl" ? "en" : "pl");
-      });
+     btn.addEventListener("click", () => {
+  const newLang = currentLang === "pl" ? "en" : "pl";
+
+  // 🔥 GAŁKA PRZESUWA SIĘ OD RAZU
+  if (newLang === "en") {
+    btn.classList.add("active");
+    btn.querySelector(".lang-switch-label").textContent = "PL";
+  } else {
+    btn.classList.remove("active");
+    btn.querySelector(".lang-switch-label").textContent = "EN";
+  }
+
+  // 🔥 Dopiero po tym zmieniamy język (fade + tłumaczenia)
+  setLanguage(newLang);
+});
+
     }
 
     applyTranslations();
