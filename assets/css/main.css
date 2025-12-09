@@ -516,4 +516,19 @@ footer .footer-inner {
   margin-top: 1.2rem;
 }
 
+/* Stałe pozycjonowanie przełącznika języka i motywu */
+.top-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto; /* dociśnięcie do prawej */
+}
+
+@media (max-width: 600px) {
+  .top-controls {
+    order: 999;          /* na telefonie przełączniki spadną na dół top-bara */
+    width: 100%;         /* pełna szerokość */
+    justify-content: flex-end;
+  }
+}
 
