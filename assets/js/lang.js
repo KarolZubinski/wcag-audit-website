@@ -262,89 +262,114 @@ const translations = {
 /* =========================================================
    LOGIKA JĘZYKÓW + FADE + SUWAK EN/PL
 ========================================================= */
+/* =========================================================
+   LANG SYSTEM — CLEAN, FAST, SEO-FRIENDLY, ZERO-LAG
+========================================================= */
+
 (function () {
   let currentLang = localStorage.getItem("lang") || "pl";
 
+  /* =========================================================
+     APPLY TRANSLATIONS
+  ========================================================= */
   function applyTranslations() {
     const dict = translations[currentLang];
     if (!dict) return;
 
+    // Update <html lang="">
+    document.documentElement.lang = currentLang;
+
+    // Update <title>
+    if (dict.meta_title) document.title = dict.meta_title;
+
+    // Update meta description
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta && dict.meta_description) {
+      meta.setAttribute("content", dict.meta_description);
+    }
+
     const elements = document.querySelectorAll("[data-i18n]");
 
-    // fade out
-    elements.forEach((el) => el.classList.add("lang-fade"));
+    // Fade-out
+    elements.forEach(el => el.classList.add("lang-fade"));
 
-    setTimeout(() => {
-      // META
-      document.documentElement.lang = currentLang;
-      if (dict.meta_title) document.title = dict.meta_title;
-
-      const meta = document.querySelector('meta[name="description"]');
-      if (meta && dict.meta_description) {
-        meta.setAttribute("content", dict.meta_description);
-      }
-
-      // TEKSTY
-      elements.forEach((el) => {
+    // Update in next frame (no delay — zero lag)
+    requestAnimationFrame(() => {
+      elements.forEach(el => {
         const key = el.getAttribute("data-i18n");
-        if (dict[key]) {
+
+        // Change only if translation exists
+        if (dict[key] !== undefined) {
           el.innerHTML = dict[key];
         }
       });
 
-      // fade in
+      // Fade-in next frame
       requestAnimationFrame(() => {
-        elements.forEach((el) => el.classList.remove("lang-fade"));
+        elements.forEach(el => el.classList.remove("lang-fade"));
       });
+    });
 
-      // SUWAK JĘZYKA
-      const btn = document.getElementById("langToggle");
-      const label = btn?.querySelector(".lang-switch-label");
-
-      if (btn && label) {
-        if (currentLang === "pl") {
-          label.textContent = "EN";
-          btn.classList.remove("active");
-          btn.setAttribute("aria-label", "Zmień język na angielski");
-        } else {
-          label.textContent = "PL";
-          btn.classList.add("active");
-          btn.setAttribute("aria-label", "Switch language to Polish");
-        }
-      }
-    }, 100);
+    updateLangToggleUI();
   }
 
+  /* =========================================================
+     UPDATE LANGUAGE TOGGLE UI (slider knob + aria-label)
+  ========================================================= */
+  function updateLangToggleUI() {
+    const btn = document.getElementById("langToggle");
+    if (!btn) return;
+
+    const label = btn.querySelector(".lang-switch-label");
+
+    if (currentLang === "pl") {
+      btn.classList.remove("active");
+      label.textContent = "EN";
+      btn.setAttribute("aria-label", "Zmień język na angielski");
+    } else {
+      btn.classList.add("active");
+      label.textContent = "PL";
+      btn.setAttribute("aria-label", "Switch language to Polish");
+    }
+  }
+
+  /* =========================================================
+     SET LANGUAGE
+  ========================================================= */
   function setLanguage(lang) {
     if (!translations[lang]) return;
+
     currentLang = lang;
     localStorage.setItem("lang", lang);
+
     applyTranslations();
   }
 
+  /* =========================================================
+     ON PAGE LOAD
+  ========================================================= */
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("langToggle");
+
+    // Instant slider movement (no delay)
     if (btn) {
-     btn.addEventListener("click", () => {
-  const newLang = currentLang === "pl" ? "en" : "pl";
+      btn.addEventListener("click", () => {
+        const newLang = currentLang === "pl" ? "en" : "pl";
 
-  // 🔥 GAŁKA PRZESUWA SIĘ OD RAZU
-  if (newLang === "en") {
-    btn.classList.add("active");
-    btn.querySelector(".lang-switch-label").textContent = "PL";
-  } else {
-    btn.classList.remove("active");
-    btn.querySelector(".lang-switch-label").textContent = "EN";
-  }
+        // Move knob visually first (instant feedback)
+        btn.classList.toggle("active", newLang === "en");
+        btn.querySelector(".lang-switch-label").textContent =
+          newLang === "en" ? "PL" : "EN";
 
-  // 🔥 Dopiero po tym zmieniamy język (fade + tłumaczenia)
-  setLanguage(newLang);
-});
-
+        // Then update translations
+        setLanguage(newLang);
+      });
     }
 
+    // Apply stored language on load
     applyTranslations();
   });
 
+  // Make lang() available globally (optional)
   window.setLanguage = setLanguage;
 })();

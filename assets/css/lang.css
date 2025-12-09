@@ -1,8 +1,9 @@
 /* =========================================================
-   LANGUAGE TOGGLE (EN/PL) – SUWAK JAK THEME, ALE NIEZALEŻNY
+   LANGUAGE TOGGLE (EN/PL) – SUWAK JAK THEME, NIEZALEŻNY
+   Wersja zoptymalizowana (Lighthouse + A11y + performance)
 ========================================================= */
 
-/* Bazowy wygląd przycisku */
+/* Bazowy wygląd suwaka języka */
 .lang-toggle {
   width: 56px;
   height: 30px;
@@ -13,22 +14,30 @@
   position: relative;
   padding: 0;
   margin-left: 1rem;
+  -webkit-tap-highlight-color: transparent; /* mobile UX */
+  touch-action: manipulation; /* Lighthouse performance */
 }
 
-/* Tło toru */
+/* Focus (dostępność) */
+.lang-toggle:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Tor suwaka */
 .lang-track {
   position: absolute;
   inset: 0;
   background: #d0d4dc;
   border-radius: 50px;
-  transition: background 0.25s;
+  transition: background 0.25s ease;
 }
 
 body.dark .lang-track {
   background: #50535b;
 }
 
-/* Gałka (kółko) */
+/* Gałka */
 .lang-thumb {
   position: absolute;
   top: 3px;
@@ -40,31 +49,38 @@ body.dark .lang-track {
   display: flex;
   align-items: center;
   justify-content: center;
+
   transition: transform 0.25s ease;
+  will-change: transform; /* Performance boost */
   overflow: hidden;
 }
 
-/* Przesunięcie gałki przy aktywnym EN (klasa .active na buttonie) */
+/* Pozycja gałki przy EN */
 .lang-toggle.active .lang-thumb {
   transform: translateX(26px);
 }
 
-/* Tekst EN/PL w gałce */
+/* Label języka wewnątrz gałki */
 .lang-switch-label {
   font-size: 0.7rem;
   font-weight: bold;
   color: var(--color-text);
   z-index: 2;
   pointer-events: none;
+  user-select: none;
 }
 
 body.dark .lang-switch-label {
   color: black;
 }
 
-/* (opcjonalnie, jeśli chcesz fade przy tłumaczeniu – możesz mieć już w main.css) */
+/* =========================================================
+   ANIMACJA TEKSTÓW PRZY TŁUMACZENIU (fade)
+========================================================= */
+
 [data-i18n] {
   transition: opacity 0.25s ease;
+  will-change: opacity; /* stabilizuje CLS */
 }
 
 .lang-fade {

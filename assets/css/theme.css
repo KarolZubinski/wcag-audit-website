@@ -1,7 +1,22 @@
 /* =========================================================
    DARK MODE – VARIABLES
+   (Automatyczny fallback + wsparcie dla prefers-color-scheme)
 ========================================================= */
 
+/* System preference (Lighthouse boost) */
+@media (prefers-color-scheme: dark) {
+  body:not(.light):not(.dark) {
+    --color-bg: #0f1115;
+    --color-text: #e7e7e7;
+    --color-text-muted: #b3b3b3;
+    --color-primary: #7bb3ff;
+    --color-primary-dark: #5a8bd8;
+    --color-accent: #ffc85c;
+    --color-border: #2d2f34;
+  }
+}
+
+/* Explicit site dark mode */
 body.dark {
   --color-bg: #0f1115;
   --color-text: #e7e7e7;
@@ -27,12 +42,13 @@ body.dark .step {
   border-color: var(--color-border);
 }
 
+/* Navigation */
 body.dark nav a:hover,
 body.dark nav a:focus {
   background: #26282f;
 }
 
-/* Pills in dark mode */
+/* Pills */
 body.dark .pill,
 body.dark .pill-small {
   background: #1c1e24;
@@ -46,10 +62,9 @@ body.dark .pill-strong {
 }
 
 /* =========================================================
-   TOGGLE BUTTON (SVG) – NEW & CLEAN
+   THEME TOGGLE SWITCH
 ========================================================= */
 
-/* Base */
 .toggle {
   width: 56px;
   height: 30px;
@@ -59,14 +74,16 @@ body.dark .pill-strong {
   cursor: pointer;
   position: relative;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;   /* Mobile UX */
 }
 
+/* Track */
 .toggle__track {
   position: absolute;
   inset: 0;
   background: #d0d4dc;
   border-radius: 50px;
-  transition: background 0.25s;
+  transition: background 0.25s ease;
 }
 
 body.dark .toggle__track {
@@ -80,15 +97,18 @@ body.dark .toggle__track {
   left: 3px;
   width: 24px;
   height: 24px;
-  background: white;
+  background: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+
   transition: transform 0.25s ease;
+  will-change: transform;       /* Performance boost */
   overflow: hidden;
 }
 
+/* Move thumb in dark mode */
 body.dark .toggle__thumb {
   transform: translateX(26px);
 }
@@ -98,10 +118,10 @@ body.dark .toggle__thumb {
   position: absolute;
   width: 18px;
   height: 18px;
-  transition: opacity 0.25s, transform 0.25s;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/* Sun visible in light */
+/* Sun (light mode) */
 .sun {
   opacity: 1;
   transform: scale(1);
@@ -111,7 +131,7 @@ body.dark .sun {
   transform: scale(0.4);
 }
 
-/* Moon visible in dark */
+/* Moon (dark mode) */
 .moon {
   opacity: 0;
   transform: scale(0.4);
@@ -119,4 +139,14 @@ body.dark .sun {
 body.dark .moon {
   opacity: 1;
   transform: scale(1);
+}
+
+/* =========================================================
+   ACCESSIBILITY IMPROVEMENTS (Lighthouse)
+========================================================= */
+
+/* Focus state for keyboard users */
+.toggle:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
 }
