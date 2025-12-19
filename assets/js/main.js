@@ -5,19 +5,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearSpan = document.getElementById("year");
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 });
-const openButtons = document.querySelectorAll(".details-btn");
-const closeButtons = document.querySelectorAll(".modal-close");
+const serviceLinks = document.querySelectorAll(".card-link");
+const modalCloses = document.querySelectorAll(".modal-close");
 
-openButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const modal = document.getElementById(btn.dataset.modal);
+serviceLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    const modal = document.getElementById(link.dataset.modal);
     modal.hidden = false;
-    btn.setAttribute("aria-expanded", "true");
-    modal.querySelector(".modal-close").focus();
+    link.setAttribute("aria-expanded", "true");
+
+    const closeBtn = modal.querySelector(".modal-close");
+    closeBtn.focus();
   });
 });
 
-closeButtons.forEach(btn => {
+modalCloses.forEach(btn => {
   btn.addEventListener("click", () => {
     const modal = btn.closest(".service-modal");
     modal.hidden = true;
@@ -30,7 +32,7 @@ closeButtons.forEach(btn => {
   });
 });
 
-/* ESC = zamknij */
+/* ESC zamyka modal */
 document.addEventListener("keydown", e => {
   if (e.key === "Escape") {
     document.querySelectorAll(".service-modal:not([hidden])").forEach(modal => {
@@ -38,6 +40,7 @@ document.addEventListener("keydown", e => {
     });
   }
 });
+
 
 /* =========================================================
    DARK MODE — SMART, FAST, SEO & A11Y OPTIMIZED
