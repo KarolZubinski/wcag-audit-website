@@ -16,11 +16,14 @@
     <link rel="preload" href="assets/css/main.css" as="style" />
     <link rel="preload" href="assets/css/theme.css" as="style" />
     <link rel="preload" href="assets/css/lang.css" as="style" />
+    <link rel="preload" href="assets/css/services.css"  as="style" />
+
 
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/lang.css" />
+    <link rel="stylesheet" href="assets/css/services.css" />
 
     <!-- Improve rendering speed -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -93,8 +96,6 @@
               </span>
             </button>
           </div>
-
-
         </div>
 
         <!-- HERO -->
@@ -171,81 +172,164 @@
     <!-- MAIN CONTENT -->
     <main id="main">
       <!-- USŁUGI -->
-      <section id="uslugi" aria-labelledby="services-heading">
-        <div class="container">
-          <h2
-            class="section-title"
-            id="services-heading"
-            data-i18n="services_heading"
-          >
-            Usługi audytu dostępności
-          </h2>
+<section id="uslugi" aria-labelledby="services-heading">
+  <div class="container">
+    <h2
+      class="section-title"
+      id="services-heading"
+      data-i18n="services_heading"
+    >
+      Usługi audytu dostępności
+    </h2>
 
-          <p class="section-intro" data-i18n="services_intro">
-            Oferuję audyty dostępności cyfrowej dla stron internetowych i
-            aplikacji webowych.
-          </p>
+    <p class="section-intro" data-i18n="services_intro">
+      Oferuję audyty dostępności cyfrowej dla stron internetowych i
+      aplikacji webowych.
+    </p>
 
-          <div class="grid-3">
-            <article class="card">
-              <h3 data-i18n="service_full_title">Pełny audyt WCAG</h3>
-              <p data-i18n="service_full_desc">
-                Kompleksowa analiza dostępności Twojego serwisu.
-              </p>
-              <ul>
-                <li data-i18n="service_full_1">
-                  Zakres zgodny z WCAG 2.1 / 2.2 AA
-                </li>
-                <li data-i18n="service_full_2">
-                  Analiza reprezentatywnych widoków
-                </li>
-                <li data-i18n="service_full_3">Raport z priorytetami</li>
-              </ul>
-            </article>
+    <div class="grid-3">
+      <!-- KARTA 1 -->
+      <article class="card">
+        <h3 data-i18n="service_full_title">Pełny audyt WCAG</h3>
+        <p data-i18n="service_full_desc">
+          Kompleksowa analiza dostępności Twojego serwisu.
+        </p>
+        <ul>
+          <li data-i18n="service_full_1">
+            Zakres zgodny z WCAG 2.1 / 2.2 AA
+          </li>
+          <li data-i18n="service_full_2">
+            Analiza reprezentatywnych widoków
+          </li>
+          <li data-i18n="service_full_3">Raport z priorytetami</li>
+        </ul>
 
-            <article class="card">
-              <h3 data-i18n="service_quick_title">
-                Szybki przegląd dostępności
-              </h3>
-              <p data-i18n="service_quick_desc">
-                Skrócona analiza kluczowych elementów serwisu.
-              </p>
-              <ul>
-                <li data-i18n="service_quick_1">
-                  Ocena najważniejszych widoków
-                </li>
-                <li data-i18n="service_quick_2">
-                  Lista najpilniejszych problemów
-                </li>
-                <li data-i18n="service_quick_3">Rekomendacje na start</li>
-              </ul>
-            </article>
+        <button
+          class="card-link"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+          data-modal="modal-full"
+        >
+           Szczegóły usługi <span class="arrow" aria-hidden="true">→</span>
+        </button>
+      </article>
 
-            <article class="card">
-              <h3 data-i18n="service_support_title">Wsparcie wdrożeniowe</h3>
-              <p data-i18n="service_support_desc">
-                Pomoc przy wdrażaniu zaleceń po audycie.
-              </p>
-              <ul>
-                <li data-i18n="service_support_1">
-                  Review makiet i komponentów
-                </li>
-                <li data-i18n="service_support_2">Konsultacje front-end</li>
-                <li data-i18n="service_support_3">Wsparcie przy testach</li>
-              </ul>
-            </article>
-          </div>
+      <!-- KARTA 2 -->
+      <article class="card">
+        <h3 data-i18n="service_quick_title">
+          Szybki przegląd dostępności
+        </h3>
+        <p data-i18n="service_quick_desc">
+          Skrócona analiza kluczowych elementów serwisu.
+        </p>
+        <ul>
+          <li data-i18n="service_quick_1">
+            Ocena najważniejszych widoków
+          </li>
+          <li data-i18n="service_quick_2">
+            Lista najpilniejszych problemów
+          </li>
+          <li data-i18n="service_quick_3">Rekomendacje na start</li>
+        </ul>
 
-          <div
-            class="aria-note"
-            aria-label="Informacja o ofercie"
-            data-i18n="services_note"
-          >
-            <strong>Nie wiesz, od czego zacząć?</strong> Napisz kilka zdań o
-            swoim serwisie.
-          </div>
-        </div>
-      </section>
+        <button
+          class="card-link"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+          data-modal="modal-full"
+        >
+           Szczegóły usługi <span class="arrow" aria-hidden="true">→</span>
+        </button>
+      </article>
+
+      <!-- KARTA 3 -->
+      <article class="card">
+        <h3 data-i18n="service_support_title">Wsparcie wdrożeniowe</h3>
+        <p data-i18n="service_support_desc">
+          Pomoc przy wdrażaniu zaleceń po audycie.
+        </p>
+        <ul>
+          <li data-i18n="service_support_1">
+            Review makiet i komponentów
+          </li>
+          <li data-i18n="service_support_2">Konsultacje front-end</li>
+          <li data-i18n="service_support_3">Wsparcie przy testach</li>
+        </ul>
+
+        <button
+          class="card-link"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+          data-modal="modal-full"
+        >
+           Szczegóły usługi <span class="arrow" aria-hidden="true">→</span>
+        </button>
+      </article>
+    </div>
+
+    <div
+      class="aria-note"
+      aria-label="Informacja o ofercie"
+      data-i18n="services_note"
+    >
+      <strong>Nie wiesz, od czego zacząć?</strong> Napisz kilka zdań o
+      swoim serwisie.
+    </div>
+  </div>
+
+  <!-- MODALE -->
+  <div
+    class="service-modal"
+    id="modal-full"
+    role="dialog"
+    aria-modal="true"
+    hidden
+  >
+    <div class="service-modal__content">
+      <h4>Szczegóły: Pełny audyt WCAG</h4>
+      <p>
+        Audyt obejmuje pełną analizę wizualną, strukturalną, treści,
+        nawigacji, formularzy oraz kodu front-end.
+      </p>
+      <button class="modal-close">Zamknij</button>
+    </div>
+  </div>
+
+  <div
+    class="service-modal"
+    id="modal-quick"
+    role="dialog"
+    aria-modal="true"
+    hidden
+  >
+    <div class="service-modal__content">
+      <h4>Szczegóły: Szybki przegląd</h4>
+      <p>
+        Idealne rozwiązanie, jeśli chcesz szybko zidentyfikować
+        najpoważniejsze bariery dostępności.
+      </p>
+      <button class="modal-close">Zamknij</button>
+    </div>
+  </div>
+
+  <div
+    class="service-modal"
+    id="modal-support"
+    role="dialog"
+    aria-modal="true"
+    hidden
+  >
+    <div class="service-modal__content">
+      <h4>Szczegóły: Wsparcie wdrożeniowe</h4>
+      <p>
+        Pomagam zespołom wdrożyć zalecenia po audycie oraz testować
+        poprawki pod kątem WCAG.
+      </p>
+      <button class="modal-close">Zamknij</button>
+    </div>
+  </div>
+</section>
+
 
       <!-- PROCES -->
       <section id="proces" aria-labelledby="process-heading">

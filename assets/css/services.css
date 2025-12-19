@@ -1,0 +1,47 @@
+/* karta jako punkt odniesienia */
+#uslugi .card {
+  position: relative;
+  padding-bottom: 3rem; /* miejsce na link */
+}
+
+/* link na dole kafelka */
+.card-link {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+
+  background: none;
+  border: none;
+  padding: 0;
+
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1a1a1a;
+
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* strzałka */
+.card-link .arrow {
+  transition: transform 0.2s ease;
+}
+
+/* hover – delikatny ruch strzałki */
+.card-link:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* focus WCAG */
+.card-link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 4px;
+}
+
+/* hover tekstu */
+.card-link:hover {
+  text-decoration: underline;
+}
