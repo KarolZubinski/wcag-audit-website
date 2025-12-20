@@ -155,3 +155,37 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================
+   ANIMACJE POPUPU
+========================= */
+
+.service-modal {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.service-modal:not([hidden]) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.service-modal__content--three {
+  transform: scale(0.96) translateY(10px);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.service-modal:not([hidden]) .service-modal__content--three {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .service-modal,
+  .service-modal__content--three {
+    transition: none;
+  }
+}

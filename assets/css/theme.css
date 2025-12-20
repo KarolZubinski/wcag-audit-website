@@ -198,6 +198,32 @@ body.dark .card-link {
   color: var(--color-primary);
 }
 
+/* =========================================================
+   POPUP — DARK MODE
+========================================================= */
+
+body.dark .service-modal {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+body.dark .service-modal__content--three {
+  background: #1a1c22;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+body.dark .service-column {
+  background: #15171c;
+}
+
+body.dark .modal-close {
+  color: var(--color-text);
+}
+
+body.dark .modal-close:hover,
+body.dark .modal-close:focus-visible {
+  color: var(--color-accent);
+}
 
 /* =========================================================
    ACCESSIBILITY IMPROVEMENTS (Lighthouse)
