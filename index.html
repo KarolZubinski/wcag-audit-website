@@ -17,12 +17,14 @@
     <link rel="preload" href="assets/css/theme.css" as="style" />
     <link rel="preload" href="assets/css/lang.css" as="style" />
     <link rel="preload" href="assets/css/services.css" as="style" />
+    <link rel="preload" href="assets/css/contact.css" as="style" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/lang.css" />
     <link rel="stylesheet" href="assets/css/services.css" />
+    <link rel="stylesheet" href="assets/css/contact.css" />
 
     <!-- Improve rendering speed -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -397,38 +399,74 @@
             </div>
 
             <div>
-              <form class="contact-box" aria-label="Formularz kontaktowy">
-                <label for="name" data-i18n="form_name"
-                  >Imię i nazwisko / firma</label
-                >
-                <input id="name" name="name" type="text" autocomplete="name" />
+              <form
+  action="https://formspree.io/f/abcdwxyz"
+  method="POST"
+  class="contact-form"
+>
+<div class="contact-box">
+  <form class="contact-form">
+    <!-- ANTY-SPAM (honeypot) -->
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-                <label for="email" data-i18n="form_email">Adres e-mail</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                />
+    <!-- SUBJECT MAILA -->
+    <input
+      type="hidden"
+      name="_subject"
+      value="Nowe zapytanie ze strony – audyt WCAG"
+    />
 
-                <label for="website" data-i18n="form_website"
-                  >Adres strony / aplikacji (URL)</label
-                >
-                <input id="website" name="website" type="url" />
+    <!-- IMIĘ -->
+    <label for="name">Imię i nazwisko / firma</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+    />
 
-                <label for="message" data-i18n="form_message"
-                  >Krótki opis potrzeb</label
-                >
-                <textarea id="message" name="message"></textarea>
+    <!-- EMAIL -->
+    <label for="email">Adres e-mail</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+    />
 
-                <button
-                  class="btn btn-primary"
-                  type="submit"
-                  data-i18n="form_submit"
-                >
-                  Wyślij wiadomość
-                </button>
-              </form>
+    <!-- STRONA -->
+    <label for="website">Adres strony / aplikacji (URL)</label>
+    <input
+      type="url"
+      id="website"
+      name="website"
+    />
+
+    <!-- WIADOMOŚĆ -->
+    <label for="message">Krótki opis potrzeb</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+    ></textarea>
+
+    <!-- PRZYCISK -->
+    <button type="submit">
+      Wyślij wiadomość
+    </button>
+
+    <!-- KOMUNIKATY (WCAG) -->
+    <p
+      class="form-status"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></p>
+  </form>
+</div>
+
+
             </div>
           </div>
         </div>
@@ -454,5 +492,6 @@
     <!-- JS -->
     <script src="assets/js/lang.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/form.js" defer></script>
   </body>
 </html>
