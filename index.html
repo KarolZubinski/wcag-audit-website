@@ -398,16 +398,20 @@
               </div>
             </div>
 
-            <div>
-              <form
-  action="https://formspree.io/f/abcdwxyz"
-  method="POST"
-  class="contact-form"
->
-<div class="contact-box">
-  <form class="contact-form">
+            <div class="contact-box">
+  <form
+    class="contact-form"
+    action="https://formspree.io/f/xlgrjqga"
+    method="POST"
+  >
     <!-- ANTY-SPAM (honeypot) -->
-    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+    <input
+      type="text"
+      name="_gotcha"
+      style="display:none"
+      tabindex="-1"
+      autocomplete="off"
+    />
 
     <!-- SUBJECT MAILA -->
     <input
@@ -452,17 +456,10 @@
     ></textarea>
 
     <!-- PRZYCISK -->
-    <button type="submit">
-      Wyślij wiadomość
-    </button>
+    <button type="submit">Wyślij wiadomość</button>
 
-    <!-- KOMUNIKATY (WCAG) -->
-    <p
-      class="form-status"
-      role="status"
-      aria-live="polite"
-      hidden
-    ></p>
+    <!-- STATUS -->
+    <p class="form-status" role="status" aria-live="polite" hidden></p>
   </form>
 </div>
 
@@ -493,5 +490,8 @@
     <script src="assets/js/lang.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/form.js" defer></script>
+    <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/form.js"></script>
+
   </body>
 </html>

@@ -152,6 +152,20 @@ body.dark .contact-box:hover {
   box-shadow: 0 0 0 3px rgba(229, 72, 72, 0.25);
 }
 
+/* =========================================
+   FIELD ERRORS
+========================================= */
+
+.field-error {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: #e54848;
+}
+
+.contact-form [aria-invalid="true"] {
+  border-color: #e54848;
+  box-shadow: 0 0 0 3px rgba(229, 72, 72, 0.25);
+}
 
 /* =========================================================
    DARK MODE
