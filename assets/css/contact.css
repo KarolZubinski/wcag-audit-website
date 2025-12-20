@@ -134,6 +134,79 @@ body.dark .contact-box:hover {
     transform: none;
   }
 }
+
+/* =========================================
+   SUCCESS MODAL
+========================================= */
+
+.success-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.success-modal[hidden] {
+  display: none;
+}
+
+.success-modal__content {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  max-width: 360px;
+  width: 90%;
+  text-align: center;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+
+  transform: scale(0.96);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.success-modal:not([hidden]) .success-modal__content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.success-modal__content h2 {
+  margin-top: 0;
+}
+
+.success-close {
+  margin-top: 1.25rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.success-close:hover,
+.success-close:focus-visible {
+  background: var(--color-primary-dark);
+}
+
+/* dark mode */
+body.dark .success-modal__content {
+  background: #1a1c22;
+  color: var(--color-text);
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .success-modal__content {
+    transition: none;
+  }
+}
+
+
 /* =========================================
    BUTTON – DISABLED
 ========================================= */

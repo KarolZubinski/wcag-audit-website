@@ -7,22 +7,18 @@ import { debounce, validateField } from "./utils.js";
 const messages = {
   pl: {
     required: "To pole jest wymagane.",
-    email: "Podaj poprawny adres e-mail.",
-    sending: "Wysyłanie…",
-    success: "Dziękuję! Wiadomość została wysłana.",
-    error: "Coś poszło nie tak. Spróbuj ponownie.",
     name: "Pole nie może zawierać cyfr ani znaków specjalnych.",
     email: "Podaj poprawny adres e-mail (np. jan@firma.pl).",
     url: "Podaj poprawny adres URL (np. https://example.com).",
-  
-
+    sending: "Wysyłanie…",
+    success: "Dziękuję! Wiadomość została wysłana.",
+    error: "Coś poszło nie tak. Spróbuj ponownie.",
   },
   en: {
+    required: "This field is required.",
     name: "This field cannot contain numbers or special characters.",
     email: "Please enter a valid email address (e.g. john@company.com).",
     url: "Please enter a valid URL (e.g. https://example.com).",
-    required: "This field is required.",
-    email: "Please enter a valid email address.",
     sending: "Sending…",
     success: "Thank you! Your message has been sent.",
     error: "Something went wrong. Please try again.",
@@ -40,8 +36,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".contact-form");
   if (!form) return;
 
-  const status = form.querySelector(".form-status");
   const submitBtn = form.querySelector('button[type="submit"]');
+
+  /* ===== SUCCESS MODAL ===== */
+  const successModal = document.getElementById("success-modal");
+  const successClose = successModal?.querySelector(".success-close");
+
+  function openSuccessModal() {
+    successModal.hidden = false;
+    successClose.focus();
+  }
+
+  function closeSuccessModal() {
+    successModal.hidden = true;
+  }
+
+  successClose?.addEventListener("click", closeSuccessModal);
+
+  successModal?.addEventListener("click", (e) => {
+    if (e.target === successModal) closeSuccessModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !successModal.hidden) {
+      closeSuccessModal();
+    }
+  });
 
   /* ===== AUTOSAVE ===== */
   const saveDraft = debounce(() => {
@@ -66,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ===== WALIDACJA POLA ===== */
+  /* ===== WALIDACJA ===== */
   const showError = (field, code) => {
     field.setAttribute("aria-invalid", "true");
 
@@ -76,10 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
       error.className = "field-error";
       error.id = `${field.id}-error`;
       field.after(error);
-      field.setAttribute("aria-describedby", error.id);
     }
 
     error.textContent = t[code];
+    field.setAttribute("aria-describedby", error.id);
   };
 
   const clearError = (field) => {
@@ -94,12 +114,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const errorCode = validateField(field);
       if (errorCode) showError(field, errorCode);
     });
+
+    field.addEventListener(
+      "input",
+      debounce(() => {
+        clearError(field);
+        const errorCode = validateField(field);
+        if (errorCode) showError(field, errorCode);
+      }, 500)
+    );
   });
 
   /* ===== SUBMIT ===== */
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    status.hidden = true;
 
     let hasError = false;
 
@@ -128,12 +156,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       localStorage.removeItem("contactDraft");
       form.reset();
-      status.textContent = t.success;
+      openSuccessModal();
     } catch {
-      status.textContent = t.error;
+      alert(t.error);
     }
 
-    status.hidden = false;
     submitBtn.disabled = false;
     submitBtn.textContent = "Wyślij wiadomość";
   });
